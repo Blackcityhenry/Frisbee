@@ -1,0 +1,33 @@
+html, body{
+  overflow-y: auto;
+}
+
+.scoreButton {
+  max-width: 100%;
+  height: 32vh !important;
+  font-size: 6em !important;
+}
+
+.poolButton {
+  max-width: 100%;
+  height: 15vh !important;
+  font-size: 4em !important;
+}
+
+.player, .vs{
+  font-size: 4em;
+}
+
+.last, .mode{
+  font-size: 2em;
+}
+
+.input{
+  height: 70px;
+  display: flex;
+  align-items: center;
+}
+
+.score{
+  font-size: 12em;
+}

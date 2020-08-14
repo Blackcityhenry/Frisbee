@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Frisbee</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vuetify@2.3.8/dist/vuetify.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="app">
+    <v-app>
+      <v-main class="green lighten-3">
+        <v-container>
+          <v-row>
+            <v-col cols="4">
+              <v-text-field class="input" color="green darken-3" v-model="home.name" label="Player's name"></v-text-field>
+              <v-col cols="12" class="text-center player">
+                {{ home.name || 'HOME' }}
+              </v-col>
+              <v-row>
+                <v-col cols="12" class="text-center score">
+                  {{ home.score }}
+                </v-col>
+              </v-row>
+              <v-row>
+                <v-col cols="12" class="text-center last grey--text text--darken-1">
+                  ({{ home.last > 0 ? '+' + home.last : home.last }})
+                </v-col>
+              </v-row>
+              <v-btn @click="addToHome" class="green scoreButton" dark block>SCORE!</v-btn>
+            </v-col>
+            <v-col cols="4">
+              <v-slider class="input" color="green darken-3" track-color="green lighten-2" v-model="scoreToWin" label="Score to win"></v-slider>
+              <v-col cols="12" class="text-center vs green--text text--darken-3">
+                VS
+              </v-col>
+              <v-row>
+                <v-col cols="12" class="text-center score">
+                  {{ pool }}
+                </v-col>
+              </v-row>
+              <v-row>
+                <v-col cols="12" class="text-center mode">
+                  {{ scoreToWin == 0 ? 'Causal Mode' : 'First to ' + scoreToWin }}
+                </v-col>
+              </v-row>
+              <v-btn @click="addPool" class="green darken-3 poolButton mb-5" dark block>Stack</v-btn>
+              <v-btn @click="deductPool" class="red poolButton" dark block>Bad Serve</v-btn>
+            </v-col>
+            <v-col cols="4">
+              <v-text-field class="input" color="green darken-3" v-model="away.name" label="Player's name"></v-text-field>
+              <v-row>
+                <v-col cols="12" class="text-center player">
+                  {{ away.name || 'AWAY' }}
+                </v-col>
+              </v-row>
+              <v-row>
+                <v-col cols="12" class="text-center score">
+                  {{ away.score }}
+                </v-col>
+              </v-row>
+              <v-row>
+                <v-col cols="12" class="text-center last grey--text text--darken-1">
+                  ({{ away.last > 0 ? '+' + away.last : away.last }})
+                </v-col>
+              </v-row>
+              <v-btn @click="addToAway" class="green scoreButton" dark block>SCORE!</v-btn>
+            </v-col>
+          </v-row>
+        </v-container>
+        <v-btn text fab @click="help=true" fixed top right>
+          <v-icon>mdi-help-circle-outline</v-icon>
+        </v-btn>
+      </v-main>
+      <v-dialog v-model="won">
+        <v-card width="100vw" class="text-center pa-5 score">
+          {{ winner }} won!!!
+          <br>
+          {{ home.score }} - {{ away.score }}
+          <v-card-actions class="text-center">
+            <v-btn @click="reset" class="green" block dark tabindex="0">Reset</v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
+      <v-dialog v-model="help" width="800">
+        <v-card>
+          <v-card-title>
+            Hot Key
+          </v-card-title>
+          <v-card-text>
+            <v-simple-table>
+              <template v-slot:default>
+                <tr>
+                  <td><v-icon>mdi-arrow-up</v-icon></td>
+                  <td>Stack: Pool add one score</td>
+                </tr>
+                <tr>
+                  <td><v-icon>mdi-arrow-down</v-icon></td>
+                  <td>Bad Serve: Pool deduct one score</td>
+                </tr>
+                <tr>
+                  <td><v-icon>mdi-arrow-left</v-icon></td>
+                  <td>Home scores</td>
+                </tr>
+                <tr>
+                  <td><v-icon>mdi-arrow-right</v-icon></td>
+                  <td>Away scores</td>
+                </tr>
+              </template>
+            </v-simple-table>
+          </v-card-text>
+        </v-card>
+      </v-dialog>
+    </v-app>
+  </div>
+  <link href="https://cdn.jsdelivr.net/npm/@mdi/font@3.x/css/materialdesignicons.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.min.js" integrity="sha256-ngFW3UnAN0Tnm76mDuu7uUtYEcG3G5H1+zioJw3t+68=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vuetify@2.3.8/dist/vuetify.min.js" integrity="sha256-b4RV6u+xflpPubfyN5gdooQRpDjROUcaCCSWbKQNX9Y=" crossorigin="anonymous"></script>
+  <script src="js/main.js" charset="utf-8"></script>
+</body>
+</html>
