@@ -15,7 +15,7 @@
         <v-container>
           <v-row>
             <v-col cols="4">
-              <v-text-field class="input" color="green darken-3" v-model="home.name" label="Player's name"></v-text-field>
+              <v-text-field tabindex="1" class="input" color="green darken-3" v-model="home.name" label="Player's name"></v-text-field>
               <v-col cols="12" class="text-center player">
                 {{ home.name || 'HOME' }}
               </v-col>
@@ -32,7 +32,7 @@
               <v-btn @click="addToHome" class="green scoreButton" dark block>SCORE!</v-btn>
             </v-col>
             <v-col cols="4">
-              <v-slider class="input" color="green darken-3" track-color="green lighten-2" v-model="scoreToWin" label="Score to win"></v-slider>
+              <v-slider tabindex="2" class="input" color="green darken-3" track-color="green lighten-2" v-model="scoreToWin" label="Score to win"></v-slider>
               <v-col cols="12" class="text-center vs green--text text--darken-3">
                 VS
               </v-col>
@@ -50,7 +50,7 @@
               <v-btn @click="deductPool" class="red poolButton" dark block>Bad Serve</v-btn>
             </v-col>
             <v-col cols="4">
-              <v-text-field class="input" color="green darken-3" v-model="away.name" label="Player's name"></v-text-field>
+              <v-text-field tabindex="1" class="input" color="green darken-3" v-model="away.name" label="Player's name"></v-text-field>
               <v-row>
                 <v-col cols="12" class="text-center player">
                   {{ away.name || 'AWAY' }}
@@ -80,7 +80,7 @@
           <br>
           {{ home.score }} - {{ away.score }}
           <v-card-actions class="text-center">
-            <v-btn @click="reset" class="green" block dark tabindex="0">Reset</v-btn>
+            <v-btn @click="reset" class="green" block dark>Reset</v-btn>
           </v-card-actions>
         </v-card>
       </v-dialog>
